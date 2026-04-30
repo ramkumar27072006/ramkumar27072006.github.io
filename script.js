@@ -153,3 +153,46 @@ if (window.innerWidth > 768) {
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
 }
+
+// ===== CONTACT FORM SUBMISSION =====
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('contact-submit');
+    const status = document.getElementById('form-status');
+    const btnText = btn.querySelector('span');
+    const btnIcon = btn.querySelector('i');
+
+    // Loading state
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+    btnIcon.className = 'fas fa-spinner fa-spin';
+    status.className = 'form-status';
+    status.textContent = '';
+
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.className = 'form-status success';
+        status.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.';
+        contactForm.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      status.className = 'form-status error';
+      status.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send. Please try again or reach out via LinkedIn.';
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Send Message';
+      btnIcon.className = 'fas fa-paper-plane';
+    }
+  });
+}

@@ -344,6 +344,40 @@ section { padding: 6rem 2rem; position: relative; }
 .form-group textarea { min-height: 140px; resize: vertical; }
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
 
+/* Form validation & status */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--accent-3);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.1);
+}
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: #00ff88;
+}
+.form-status {
+  margin-top: 0.5rem; padding: 0; border-radius: 10px;
+  font-size: 0.9rem; text-align: center;
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: all 0.4s ease;
+}
+.form-status.success, .form-status.error {
+  padding: 0.9rem 1.2rem;
+  max-height: 80px; opacity: 1;
+}
+.form-status.success {
+  background: rgba(0, 255, 136, 0.08); color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+.form-status.error {
+  background: rgba(255, 107, 157, 0.08); color: var(--accent-3);
+  border: 1px solid rgba(255, 107, 157, 0.2);
+}
+.form-status i { margin-right: 0.5rem; }
+#contact-submit:disabled {
+  opacity: 0.6; cursor: not-allowed;
+  transform: none !important;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   padding: 2rem; text-align: center; border-top: 1px solid var(--glass-border);
