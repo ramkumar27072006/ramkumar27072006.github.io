@@ -212,8 +212,8 @@ const certMapping = {
   "IBM Design Thinking": ["IBMDesign20251102-30-l8qqav.pdf"],
   "Generative AI Tools": ["Ramkumar R_Generative AI Tools.pdf"],
   "Jailbreaking Large Language Models": ["Event-certificate-22007--1729793309.253968.pdf"],
-  "NatuRx Bio-Med Quiz": ["certificate.jpg"],
-  "DECODEX — Kanam 2025": ["033.jpg", "1745466139592.jpg", "1745466202705.png"],
+  "NatuRx Bio-Med Quiz": ["1745466202705.png"],
+  "DECODEX — Kanam 2025": ["1745466139592.jpg"],
   "Infosys Springboard AI Masterclass": [
     "infosys springerboard AI/0002f2a3-6369-4bf9-86fe-3de650a2689a.pdf",
     "infosys springerboard AI/0c6de93e-6c14-44a8-bc4b-081a6301a97d.pdf",
@@ -247,30 +247,30 @@ document.querySelectorAll('.cert-card').forEach(card => {
   card.addEventListener('click', () => {
     const title = card.querySelector('h4').textContent;
     currentCerts = certMapping[title] || [];
-    
+
     if (currentCerts.length === 0) {
       alert("Certificate document is not available for this course yet.");
       return;
     }
-    
+
     currentCertIndex = 0;
     certModalTitle.textContent = title;
-    
+
     if (currentCerts.length > 1) {
       certNav.classList.add('active');
       updateCertNav();
     } else {
       certNav.classList.remove('active');
     }
-    
+
     loadCert();
     certModal.classList.add('show');
     document.body.style.overflow = 'hidden';
   });
 });
 
-if(certCloseBtn) certCloseBtn.addEventListener('click', closeCertModal);
-if(certModal) certModal.addEventListener('click', (e) => {
+if (certCloseBtn) certCloseBtn.addEventListener('click', closeCertModal);
+if (certModal) certModal.addEventListener('click', (e) => {
   if (e.target === certModal) closeCertModal();
 });
 
@@ -283,7 +283,7 @@ function closeCertModal() {
 function loadCert() {
   const file = currentCerts[currentCertIndex];
   const url = assetsBaseUrl + file;
-  
+
   if (file.toLowerCase().endsWith('.pdf')) {
     certModalBody.innerHTML = `<iframe src="${url}#toolbar=0" frameborder="0"></iframe>`;
   } else {
@@ -297,7 +297,7 @@ function updateCertNav() {
   certNextBtn.disabled = currentCertIndex === currentCerts.length - 1;
 }
 
-if(certPrevBtn) certPrevBtn.addEventListener('click', () => {
+if (certPrevBtn) certPrevBtn.addEventListener('click', () => {
   if (currentCertIndex > 0) {
     currentCertIndex--;
     loadCert();
@@ -305,7 +305,7 @@ if(certPrevBtn) certPrevBtn.addEventListener('click', () => {
   }
 });
 
-if(certNextBtn) certNextBtn.addEventListener('click', () => {
+if (certNextBtn) certNextBtn.addEventListener('click', () => {
   if (currentCertIndex < currentCerts.length - 1) {
     currentCertIndex++;
     loadCert();
