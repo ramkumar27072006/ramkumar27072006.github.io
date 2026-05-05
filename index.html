@@ -511,6 +511,14 @@
             <div class="cert-date">Feb 2025</div>
           </div>
         </div>
+        <div class="cert-card reveal" style="cursor: pointer;" title="Click to view certificates">
+          <div class="cert-icon" style="background:rgba(255,107,157,0.12);"><i class="fas fa-graduation-cap"></i></div>
+          <div class="cert-info">
+            <h4>Infosys Springboard AI Masterclass</h4>
+            <div class="cert-org">Infosys</div>
+            <div class="cert-date">12 Certifications</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -580,6 +588,23 @@
     </div>
     <p>Designed & Built by <strong>Ramkumar R</strong> · © 2026 · Made with <span class="heart">❤</span></p>
   </footer>
+
+  <!-- ===== CERTIFICATE MODAL ===== -->
+  <div class="cert-modal" id="cert-modal">
+    <div class="cert-modal-content">
+      <div class="cert-modal-header">
+        <div class="cert-modal-title" id="cert-modal-title">Certificate</div>
+        <div class="cert-close" id="cert-close">&times;</div>
+      </div>
+      <div class="cert-modal-body" id="cert-modal-body">
+      </div>
+      <div class="cert-nav" id="cert-nav">
+        <button class="btn btn-outline" id="cert-prev" style="padding: 0.5rem 1rem;"><i class="fas fa-chevron-left"></i> Prev</button>
+        <span id="cert-counter">1 / 1</span>
+        <button class="btn btn-outline" id="cert-next" style="padding: 0.5rem 1rem;">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

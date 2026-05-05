@@ -195,4 +195,122 @@ if (contactForm) {
       btnIcon.className = 'fas fa-paper-plane';
     }
   });
+    }
+  });
 }
+
+// ===== CERTIFICATE VIEWER MODAL =====
+const certMapping = {
+  "Innovating with Google Cloud AI": ["INNOVATING WITH GOOGLE CLOUD AI.pdf"],
+  "AI Agents": ["AI agents.pdf"],
+  "RAG and Agentic AI": ["RAG and Agentic AI.pdf"],
+  "Object Detection with Deep Learning": ["Object Detection with Deep Learning.pdf"],
+  "MATLAB Onramp & Plots": ["MATLAB_ONRAMP_certificate.pdf", "Matlab_Plots_certificate.pdf"],
+  "Python Course — Mastering Essentials": ["Python Course - Scaler.png"],
+  "Data Science Certification": ["RAMKUMAR_R_Data Science.pdf"],
+  "WordPress Development": ["Coursera Wordpress.pdf"],
+  "Cybersecurity Analyst Job Simulation": ["Cyber Job Simulation DELOITTE.pdf"],
+  "Dark Web, Anonymity & Cryptocurrency": ["Introduction to Dark Web, Anonymity, and Cryptocurrency.png"],
+  "IBM Design Thinking": ["IBMDesign20251102-30-l8qqav.pdf"],
+  "Generative AI Tools": ["Ramkumar R_Generative AI Tools.pdf"],
+  "Jailbreaking Large Language Models": ["Event-certificate-22007--1729793309.253968.pdf"],
+  "NatuRx Bio-Med Quiz": ["certificate.jpg"],
+  "DECODEX — Kanam 2025": ["033.jpg", "1745466139592.jpg", "1745466202705.png"],
+  "Infosys Springboard AI Masterclass": [
+    "infosys springerboard AI/0002f2a3-6369-4bf9-86fe-3de650a2689a.pdf",
+    "infosys springerboard AI/0c6de93e-6c14-44a8-bc4b-081a6301a97d.pdf",
+    "infosys springerboard AI/167a9bfa-5551-415f-8a30-229c0972c2d5.pdf",
+    "infosys springerboard AI/316c040c-d884-40fc-a856-ab736bedf50a.pdf",
+    "infosys springerboard AI/36e60e97-bc15-4c26-97b2-abdad1c741b2.pdf",
+    "infosys springerboard AI/4b211836-434c-4072-9bb7-b14e4040d3d4.pdf",
+    "infosys springerboard AI/8c5398ad-42b1-4320-9c9f-44f5cfa0d227.pdf",
+    "infosys springerboard AI/8fdef9bc-d516-46e8-9fec-3cc3bdff979c.pdf",
+    "infosys springerboard AI/9667080b-6dfb-4356-9e2d-5a991d866d0e.pdf",
+    "infosys springerboard AI/aaea440e-488e-4b8e-84ab-3d9659a489dd.pdf",
+    "infosys springerboard AI/dd3ba10c-f278-47d2-94e4-6a47ca839f78.pdf",
+    "infosys springerboard AI/f1a524b5-e97a-4ff8-a210-9df00263c118.pdf"
+  ]
+};
+
+const certModal = document.getElementById('cert-modal');
+const certModalTitle = document.getElementById('cert-modal-title');
+const certModalBody = document.getElementById('cert-modal-body');
+const certCloseBtn = document.getElementById('cert-close');
+const certPrevBtn = document.getElementById('cert-prev');
+const certNextBtn = document.getElementById('cert-next');
+const certCounter = document.getElementById('cert-counter');
+const certNav = document.getElementById('cert-nav');
+
+let currentCerts = [];
+let currentCertIndex = 0;
+const assetsBaseUrl = 'assets/certificates/';
+
+document.querySelectorAll('.cert-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const title = card.querySelector('h4').textContent;
+    currentCerts = certMapping[title] || [];
+    
+    if (currentCerts.length === 0) {
+      alert("Certificate document is not available for this course yet.");
+      return;
+    }
+    
+    currentCertIndex = 0;
+    certModalTitle.textContent = title;
+    
+    if (currentCerts.length > 1) {
+      certNav.classList.add('active');
+      updateCertNav();
+    } else {
+      certNav.classList.remove('active');
+    }
+    
+    loadCert();
+    certModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+if(certCloseBtn) certCloseBtn.addEventListener('click', closeCertModal);
+if(certModal) certModal.addEventListener('click', (e) => {
+  if (e.target === certModal) closeCertModal();
+});
+
+function closeCertModal() {
+  certModal.classList.remove('show');
+  document.body.style.overflow = '';
+  certModalBody.innerHTML = '';
+}
+
+function loadCert() {
+  const file = currentCerts[currentCertIndex];
+  const url = assetsBaseUrl + file;
+  
+  if (file.toLowerCase().endsWith('.pdf')) {
+    certModalBody.innerHTML = `<iframe src="${url}#toolbar=0" frameborder="0"></iframe>`;
+  } else {
+    certModalBody.innerHTML = `<img src="${url}" alt="Certificate">`;
+  }
+}
+
+function updateCertNav() {
+  certCounter.textContent = `${currentCertIndex + 1} / ${currentCerts.length}`;
+  certPrevBtn.disabled = currentCertIndex === 0;
+  certNextBtn.disabled = currentCertIndex === currentCerts.length - 1;
+}
+
+if(certPrevBtn) certPrevBtn.addEventListener('click', () => {
+  if (currentCertIndex > 0) {
+    currentCertIndex--;
+    loadCert();
+    updateCertNav();
+  }
+});
+
+if(certNextBtn) certNextBtn.addEventListener('click', () => {
+  if (currentCertIndex < currentCerts.length - 1) {
+    currentCertIndex++;
+    loadCert();
+    updateCertNav();
+  }
+});

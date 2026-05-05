@@ -422,3 +422,46 @@ section { padding: 6rem 2rem; position: relative; }
 /* ===== TYPING CURSOR ===== */
 .typed-cursor { color: var(--accent-1); animation: blink 1s infinite; font-weight: 300; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ===== CERTIFICATE MODAL ===== */
+.cert-card { cursor: pointer; }
+.cert-modal {
+  display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+  width: 100%; height: 100%; background-color: rgba(10, 10, 26, 0.95);
+  backdrop-filter: blur(8px); justify-content: center; align-items: center;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.cert-modal.show { display: flex; opacity: 1; }
+.cert-modal-content {
+  position: relative; width: 90%; max-width: 1000px; height: 85vh;
+  background: var(--bg-secondary); border-radius: 12px;
+  border: 1px solid var(--glass-border); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column; overflow: hidden;
+  transform: scale(0.95); transition: transform 0.3s ease;
+}
+.cert-modal.show .cert-modal-content { transform: scale(1); }
+.cert-modal-header {
+  padding: 1rem 1.5rem; display: flex; justify-content: space-between;
+  align-items: center; border-bottom: 1px solid var(--glass-border);
+  background: var(--bg-primary);
+}
+.cert-modal-title { font-size: 1.2rem; font-weight: 600; color: var(--accent-2); }
+.cert-close {
+  color: var(--text-muted); font-size: 1.8rem; font-weight: bold;
+  cursor: pointer; transition: color 0.3s; line-height: 1;
+}
+.cert-close:hover { color: var(--accent-3); }
+.cert-modal-body {
+  flex: 1; position: relative; display: flex; justify-content: center; align-items: center;
+  padding: 0; background: #222; /* Dark background for viewer */
+  overflow: hidden;
+}
+.cert-modal-body iframe, .cert-modal-body img {
+  width: 100%; height: 100%; border: none; object-fit: contain; background: white;
+}
+.cert-nav {
+  display: none; padding: 1rem 1.5rem; background: var(--bg-primary);
+  justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--glass-border);
+}
+.cert-nav.active { display: flex; }
