@@ -195,8 +195,6 @@ if (contactForm) {
       btnIcon.className = 'fas fa-paper-plane';
     }
   });
-    }
-  });
 }
 
 // ===== CERTIFICATE VIEWER MODAL =====
