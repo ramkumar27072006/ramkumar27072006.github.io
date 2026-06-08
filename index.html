@@ -14,7 +14,6 @@
 <body>
   <div class="cursor-glow"></div>
 
-  <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="nav-logo">Ramkumar R<span>.dev</span></a>
@@ -32,7 +31,6 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
     <div class="hero-bg"></div>
     <canvas id="particles-canvas"></canvas>
@@ -74,7 +72,6 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
   <section id="about">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Who I Am</span>
@@ -120,7 +117,6 @@
     </div>
   </section>
 
-  <!-- ===== SKILLS ===== -->
   <section id="skills" style="background:var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Expertise</span>
@@ -191,7 +187,6 @@
     </div>
   </section>
 
-  <!-- ===== EXPERIENCE ===== -->
   <section id="experience">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Journey</span>
@@ -254,7 +249,6 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
   <section id="projects" style="background:var(--bg-secondary);">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Portfolio</span>
@@ -392,7 +386,6 @@
     </div>
   </section>
 
-  <!-- ===== CERTIFICATIONS ===== -->
   <section id="certifications">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Credentials</span>
@@ -523,7 +516,6 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
   <section id="contact" class="contact-section">
     <div class="section-container">
       <div class="section-header"><span class="section-tag">Get in Touch</span>
@@ -552,12 +544,12 @@
             </a>
           </div>
         </div>
-        <form class="contact-form reveal-right" id="contact-form"
-          action="https://formsubmit.co/ramkumarashvanth09@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from your Portfolio Website">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none;">
+
+        <form class="contact-form reveal-right" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New message from your Portfolio Website">
+          <input type="checkbox" name="botcheck" style="display: none;">
+          
           <div class="form-group">
             <input type="text" name="name" placeholder="Your Name *" id="contact-name" required>
           </div>
@@ -570,6 +562,7 @@
           <div class="form-group">
             <textarea name="message" placeholder="Your Message... *" id="contact-message" required></textarea>
           </div>
+          
           <button type="submit" class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;">
             <i class="fas fa-paper-plane"></i> <span>Send Message</span>
           </button>
@@ -579,7 +572,6 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-socials">
       <a href="https://github.com/ramkumar27072006" target="_blank"><i class="fab fa-github"></i></a>
@@ -589,7 +581,6 @@
     <p>Designed & Built by <strong>Ramkumar R</strong> · © 2026 · Made with <span class="heart">❤</span></p>
   </footer>
 
-  <!-- ===== CERTIFICATE MODAL ===== -->
   <div class="cert-modal" id="cert-modal">
     <div class="cert-modal-content">
       <div class="cert-modal-header">
