@@ -173,18 +173,13 @@ if (contactForm) {
 
     try {
       const formData = new FormData(contactForm);
-      
-      // Convert FormData to JSON for Web3Forms compatibility
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
 
       const response = await fetch(contactForm.action, {
         method: 'POST',
+        body: formData,
         headers: { 
-            'Content-Type': 'application/json',
             'Accept': 'application/json' 
-        },
-        body: json
+        }
       });
 
       if (response.ok) {
